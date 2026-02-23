@@ -12,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  timeout: 60000, // naikkan global timeout
+
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -25,12 +27,22 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    headless: true,
+    channel: 'chromium', // pastikan pakai chromium bukan chrome
+    launchOptions: {
+      args: [
+        '--disable-blink-features=AutomationControlled',
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage', // penting untuk CI/CD
+      ]
+    },
+    userAgent: 'Mozilla/5.0 (Macintosh; ARM Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    viewport: { width: 1280, height: 720 },
     trace: 'on-first-retry',
   },
+  
+  
 
   /* Configure projects for major browsers */
   projects: [
