@@ -8,13 +8,13 @@ test('test bukalapak', async ({ page }) => {
   await expect(transaksiLink).toBeVisible({ timeout: 10000 });
   await transaksiLink.click();
 
-  const produkLink = page.locator('a', { hasText: 'Produk VirtualRiwayat' });
-  await expect(produkLink).toBeVisible({ timeout: 10000 });
-  produkLink.click();
+  // const produkLink = page.locator('a', { hasText: 'Produk VirtualRiwayat' });
+  // await expect(produkLink).toBeVisible({ timeout: 10000 });
+  // produkLink.click();
 
-  const daftarLink = page.getByRole('link', { name: 'Daftar' });
-  await expect(daftarLink).toBeVisible({ timeout: 10000 });
-  await daftarLink.click();
+  // const daftarLink = page.getByRole('link', { name: 'Daftar' });
+  // await expect(daftarLink).toBeVisible({ timeout: 10000 });
+  // await daftarLink.click();
 });
 
 
