@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 60000, // naikkan global timeout
+  timeout: 60000,
 
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -28,17 +28,17 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true,
-    channel: 'chromium', // pastikan pakai chromium bukan chrome
     launchOptions: {
       args: [
+        '--no-sandbox',           // wajib di Linux CI
+        '--disable-setuid-sandbox', // wajib di Linux CI
+        '--disable-dev-shm-usage',  // cegah crash karena memory
         '--disable-blink-features=AutomationControlled',
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage', // penting untuk CI/CD
       ]
     },
-    userAgent: 'Mozilla/5.0 (Macintosh; ARM Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     viewport: { width: 1280, height: 720 },
+    actionTimeout: 15000,
+    navigationTimeout: 30000,
     trace: 'on-first-retry',
   },
   
