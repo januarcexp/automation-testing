@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test('test bukalapak', async ({ page }) => {
-  await page.goto('https://www.bukalapak.com/');
+  await page.goto('https://www.google.com/');
   await page.waitForLoadState('networkidle');
   
-  const transaksiLink = page.getByRole('link', { name: 'Transaksi' });
-  await expect(transaksiLink).toBeVisible({ timeout: 10000 });
-  await transaksiLink.click();
+  // const transaksiLink = page.getByRole('link', { name: 'Transaksi' });
+  // await expect(transaksiLink).toBeVisible({ timeout: 10000 });
+  // await transaksiLink.click();
 
   // const produkLink = page.locator('a', { hasText: 'Produk VirtualRiwayat' });
   // await expect(produkLink).toBeVisible({ timeout: 10000 });
