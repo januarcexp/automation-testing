@@ -1,8 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test('test bukalapak', async ({ page }) => {
-  await page.goto('https://www.google.com/');
-  await page.waitForLoadState('networkidle');
+test('test', async ({ page }) => {
+  await page.goto('https://practicetestautomation.com/practice-test-login/');
+  await page.getByRole('textbox', { name: 'Username' }).click();
+  await page.getByRole('textbox', { name: 'Username' }).fill('student');
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'Password' }).fill('Password123');
+  await page.getByRole('button', { name: 'Submit' }).click();
+
   
   // const transaksiLink = page.getByRole('link', { name: 'Transaksi' });
   // await expect(transaksiLink).toBeVisible({ timeout: 10000 });
